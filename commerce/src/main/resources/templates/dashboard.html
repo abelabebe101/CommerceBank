@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<!--    <meta charset="ISO-8859-1">-->
+    <title>Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+</head>
+
+<div class="container text-center">
+		<div>
+        <h1>Commerce Bank Home</h1>
+		</div>
+		<form th:action="@{/dashboard}" th:object="${user}"
+            method="post" style="max-width: 600px; margin: 0 auto;">
+         
+
+   
+<body>
+    <div class="container text-center">
+        <h3>Welcome to the dashboard</h3>
+    </div>
+     
+</body>
+</html>

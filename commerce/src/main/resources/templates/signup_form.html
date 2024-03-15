@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<!--    <meta charset="ISO-8859-1">-->
+    <title>Sign Up</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+	 
+    <div class="container text-center">
+		<div>
+        <h1>Commerce Bank Sign Up</h1>
+		</div>
+		<form th:action="@{/process_register}" th:object="${user}"
+            method="post" style="max-width: 600px; margin: 0 auto;">
+         
+            <!-- new class below -->
+
+        <div class="m-3">
+            <div class="form-group row">
+                <label class="col-4 col-form-label">E-mail </label> 
+                <div class="col-8">
+                    <input type="email" th:field="*{email}" class="form-control" required />
+                </div>
+            </div>
+             
+                         <!-- new class below -->
+
+             
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Password: </label>
+                <div class="col-8">
+                    <input type="password" th:field="*{password}" class="form-control"
+                            required minlength="6" maxlength="10"/>
+                </div>
+            </div>
+             
+                         <!-- new class below -->
+
+             
+            <div class="form-group row">
+                <label class="col-4 col-form-label">First Name: </label>
+                <div class="col-8">
+                    <input type="text" th:field="*{firstName}" class="form-control"
+                            required minlength="2" maxlength="20"/>
+                </div>
+            </div>
+             
+                         <!-- new class below -->
+
+             
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Last Name: </label>
+                <div class="col-8">
+                    <input type="text" th:field="*{lastName}" class="form-control"
+                            required minlength="2" maxlength="20" />
+                </div>
+            </div>
+             
+               <!-- new class below -->
+
+             
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Phone Number: </label>
+                <div class="col-8">
+                    <input type="text" th:field="*{phoneNum}" class="form-control"
+                            required minlength="10" maxlength="10"/>
+                </div>
+            </div>
+            
+              <!-- new class below -->
+
+             
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Street Address: </label>
+                <div class="col-8">
+                    <input type="text" th:field="*{addressLine1}" class="form-control"
+                            required minlength="2" maxlength="20"/>
+                </div>
+            </div>
+             
+               <!-- new class below -->
+
+             
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Street Address (line 2): </label>
+                <div class="col-8">
+                    <input type="text" th:field="*{addressLine2}" class="form-control"
+                            required minlength="2" maxlength="20"/>
+                </div>
+            </div>
+             
+               <!-- new class below -->
+
+             
+            <div class="form-group row">
+                <label class="col-4 col-form-label">City: </label>
+                <div class="col-8">
+                    <input type="text" th:field="*{city}" class="form-control"
+                            required minlength="2" maxlength="20"/>
+                </div>
+            </div>
+            
+              <!-- new class below -->
+
+             
+            <div class="form-group row">
+                <label class="col-4 col-form-label">State: </label>
+                <div class="col-8">
+                    <input type="text" th:field="*{state}" class="form-control"
+                            required minlength="2" maxlength="20"/>
+                </div>
+            </div>
+             
+               <!-- new class below -->
+
+             
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Zip:</label>
+                <div class="col-8">
+                    <input type="text" th:field="*{zipcode}" class="form-control"
+                            required minlength="2" maxlength="20"/>
+                </div>
+            </div>
+             
+               <!-- new class below -->
+
+             
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Date of Birth: (mm/dd/yyyy) </label>
+                <div class="col-8">
+                    <input type="text" th:field="*{dob}" class="form-control"
+                            required minlength="10" maxlength="10"/>
+                </div>
+            </div>
+             
+             
+             <!-- new class below -->
+
+             
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Transfer source: </label>
+                <div class="col-8">
+                    <input type="text" th:field="*{transferBank}" class="form-control"
+                            required minlength="10" maxlength="10"/>
+                </div>
+            </div>
+         
+         
+          <!-- new class below -->
+
+             
+            <div class="form-group row">
+                <label class="col-4 col-form-label">How Much Would You Like To Deposit? </label>
+                <div class="col-8">
+                    <input type="text" th:field="*{balance}" class="form-control"
+                            required minlength="1" maxlength="10"/>
+                </div>
+            </div>
+            
+             
+             <!-- new class below -->
+
+             
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Transfer Routing Number: </label>
+                <div class="col-8">
+                    <input type="text" th:field="*{routingNum}" class="form-control"
+                            required minlength="10" maxlength="10"/>
+                </div>
+            </div>
+            
+            
+             
+             <!-- new class below -->
+
+             
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Transfer Account Number: </label>
+                <div class="col-8">
+                    <input type="text" th:field="*{transferAccountNum}" class="form-control"
+                            required minlength="10" maxlength="10"/>
+                </div>
+            </div>
+            
+                         <!-- submit button below -->
+
+            <div>
+                <button type="submit" class="btn btn-primary">Sign Up</button>
+            </div>
+        </div>
+        </form>
+        
+    </div>
+    
+     
+</body>
+</html>
