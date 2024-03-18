@@ -1,6 +1,8 @@
 package com.Commerceapp.app.rest;
 
+import org.hibernate.mapping.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -44,18 +46,26 @@ public class AppController {
 	
 	@PostMapping("/process_register")
 	public String processRegistration(User user) {
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		String encodedPassword = encoder.encode(user.getPassword());
+		user.setPassword(encodedPassword);
 	    user.setAccountNum();
 		repo.save(user);	     
 	    return "register_success";
 	      
 	}
 	
-	@PostMapping("/process_dashboard")
+	@GetMapping("/dashboard")
 	public String showDash(Model model) {
-	     
 	    return "dashboard";
 	}
-  
+	
+//	@PostMapping("/process_dashboard")
+//	public String showDash(Model model) {
+//	     
+//	    return "dashboard";
+//	}
+//  
    
 
 }

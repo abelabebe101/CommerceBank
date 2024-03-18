@@ -51,5 +51,15 @@ public class CustomUserDetails implements UserDetails {
     public String getFullName() {
         return user.getFirstName() + " " + user.getLastName();
     }
+    
+    public String getaddress() {
+        return user.getAddressLine1() + " " + user.getAddressLine2()  + " " +  user.getCity() + " " + user.getState() + " " + user.getZipcode();       
+          
+    }
+    
+    public Double getbalanceview() {
+        return user.getBalance();
+    }
+    
  
 }

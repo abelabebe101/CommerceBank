@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+	<head>
 <!--    <meta charset="ISO-8859-1">-->
     <title>Dashboard</title>
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
@@ -10,8 +10,8 @@
 		<div>
         <h1>Commerce Bank Home</h1>
 		</div>
-		<form th:action="@{/dashboard}" th:object="${user}"
-            method="post" style="max-width: 600px; margin: 0 auto;">
+<!--		<form th:action="@{/dashboard}" th:object="${user}"-->
+<!--            method="post" style="max-width: 600px; margin: 0 auto;">-->
          
 
    
@@ -19,6 +19,50 @@
     <div class="container text-center">
         <h3>Welcome to the dashboard</h3>
     </div>
+ <div>
+        <h1>Your Data:</h1>
+    </div>
+    <div class="container text-center">
+    <div>
+        <form th:action="@{/logout}" method="post">
+            <p>
+                 <b><span sec:authentication="principal.fullName"></span></b>
+                 <b><span sec:authentication="principal.address"></span></b>
+            </p>
+            <input type="submit" value="Sign Out" />
+        </form>
+    </div>
+ <div>
+        <h1>Your Available Balance:</h1>
+    </div>
+    <div class="container text-center">
+    <div>
+            <p>
+                 <b><span sec:authentication="principal.balanceview"></span></b>
+            </p>
+    </div>
+     
+<!--    <div>-->
+<!--        <table class="table table-striped table-bordered">-->
+<!--            <thead class="thead-dark">-->
+<!--                <tr>-->
+<!--                    <th>User ID</th>-->
+<!--                    <th>E-mail</th>-->
+<!--                    <th>First Name</th>-->
+<!--                    <th>Last Name</th>-->
+<!--                </tr>-->
+<!--            </thead>-->
+<!--            <tbody>-->
+<!--                <tr th:each="user: ${listUsers}">-->
+<!--                    <td th:text="${user.id}">User ID</td>-->
+<!--                    <td th:text="${user.email}">E-mail</td>-->
+<!--                    <td th:text="${user.firstName}">First Name</td>-->
+<!--                    <td th:text="${user.lastName}">Last Name</td>-->
+<!--                </tr>-->
+<!--            </tbody>-->
+<!--        </table>-->
+<!--    </div>-->
+</div>
      
 </body>
 </html>

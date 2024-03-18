@@ -1,0 +1,4 @@
+INDEX VERSION 1.134+C:\Users\abelr\Documents\Spring 2024\452\final\commerce (2)\commerce\.metadata\.plugins\org.eclipse.jdt.core
+1865797976.index
+2784638515.index
+2904285378.index
