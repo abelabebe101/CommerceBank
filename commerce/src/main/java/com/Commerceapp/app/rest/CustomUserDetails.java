@@ -1,6 +1,10 @@
 package com.Commerceapp.app.rest;
  
 import java.util.Collection;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+
  
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -53,13 +57,35 @@ public class CustomUserDetails implements UserDetails {
     }
     
     public String getaddress() {
-        return user.getAddressLine1() + " " + user.getAddressLine2()  + " " +  user.getCity() + " " + user.getState() + " " + user.getZipcode();       
+        return user.getAddressLine1() + " , " + user.getAddressLine2()  + " , " +  user.getCity() + " , " + user.getState() + " , " + user.getZipcode();       
           
     }
     
-    public Double getbalanceview() {
-        return user.getBalance();
+    public String getbirth() {
+        return user.getDob();       
+          
     }
+    
+    public String getaccnum() {
+        return user.getAccountNum();
+          
+    }
+    
+    public String getuser_email() {
+        return user.getEmail();
+    }
+    
+    public String getbalanceview() {
+        double balance = user.getBalance();
+        
+        BigDecimal formattedBalance = BigDecimal.valueOf(balance);
+        
+        formattedBalance = formattedBalance.setScale(2, RoundingMode.HALF_UP);
+        
+        return formattedBalance.toString();
+    }
+
+
     
  
 }

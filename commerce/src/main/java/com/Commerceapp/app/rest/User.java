@@ -202,4 +202,6 @@ public class User {
 	public void setTransferAccountNum(String transferAccountNum) {
 		this.transferAccountNum = transferAccountNum;
 	}
+
+
 }

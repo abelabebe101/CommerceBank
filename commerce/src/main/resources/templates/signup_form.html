@@ -1,7 +1,250 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
-<!--    <meta charset="ISO-8859-1">-->
+    <title>Sign Up</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            background-color: #F2FFF2;
+            color: #333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .container {
+            margin-top: 50px;
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+        h1 {
+            color: #006747;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #006747;
+            margin-bottom: 30px;
+        }
+        /* Navbar styling */
+        .navbar {
+            background-color: #006747; /* Adjust the color to fit your brand */
+            border-radius: 0;
+        }
+        .navbar-brand, .navbar-nav .nav-link {
+            color: #FFFFFF;
+        }
+        .navbar-brand:hover, .navbar-nav .nav-link:hover {
+            color: #FFFFFF;
+        }
+        .icon-image {
+            max-height: 70px; /* Adjust based on your image's size */
+            width: auto;
+        }
+        #signInButton {
+        background-color: #006747; /* Dark green background */
+        color: #FFFFFF; /* White text */
+        border: none; /* Removes the default border */
+        padding: 10px 20px; /* Adds some padding for better appearance */
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 5px; /* Optional: Adds rounded corners */
+        }
+
+        #signInButton:hover {
+            opacity: 0.8; /* Optional: Adds a hover effect to make the button slightly transparent on hover */
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+        <form th:action="@{/}" method="get">
+            <a href="javascript:;" onclick="this.closest('form').submit();">
+                <img src="https://www.login-bank.org/wp-content/uploads/commerce-bank.png" alt="Commerce Bank Logo" class="icon-image" style="border: none; outline: none;">
+            </a>
+        </form>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/}"><b>Home</b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/register}"><b>Register</b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/activate}"><b>Activate Account</b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/login}"><b>Login</b></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container text-center">
+    <img src="https://epicci.org/wp-content/uploads/2019/02/commerce-bank-logo-2x.png" alt="Commerce Bank Logo" style="max-width: 605px; height: auto;" >
+    <div class="container text-center">
+        <div>
+            <h2>New Customer Sign Up</h2>
+        </div><br>
+        <form th:action="@{/process_register}" th:object="${user}"
+              method="post" style="max-width: 600px; margin: 0 auto;">
+
+            <div class="m-3">
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">E-mail </label>
+                    <div class="col-8">
+                        <input type="email" th:field="*{email}" class="form-control" required />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">Password: </label>
+                    <div class="col-8">
+                        <input type="password" th:field="*{password}" class="form-control"
+                               required minlength="6" maxlength="30"/>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">First Name: </label>
+                    <div class="col-8">
+                        <input type="text" th:field="*{firstName}" class="form-control"
+                               required minlength="2" maxlength="20"/>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">Last Name: </label>
+                    <div class="col-8">
+                        <input type="text" th:field="*{lastName}" class="form-control"
+                               required minlength="2" maxlength="20" />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">Phone Number: </label>
+                    <div class="col-8">
+                        <input type="text" th:field="*{phoneNum}" class="form-control"
+                               required minlength="10" maxlength="10"/>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">Street Address: </label>
+                    <div class="col-8">
+                        <input type="text" th:field="*{addressLine1}" class="form-control"
+                               required minlength="2" maxlength="20"/>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">Street Address (line 2): </label>
+                    <div class="col-8">
+                        <input type="text" th:field="*{addressLine2}" class="form-control" minlength="0" maxlength="20"/>
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">City: </label>
+                    <div class="col-8">
+                        <input type="text" th:field="*{city}" class="form-control"
+                               required minlength="2" maxlength="20"/>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">State: </label>
+                    <div class="col-8">
+                        <input type="text" th:field="*{state}" class="form-control"
+                               required minlength="2" maxlength="20"/>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">Zip:</label>
+                    <div class="col-8">
+                        <input type="text" th:field="*{zipcode}" class="form-control"
+                               required minlength="5" maxlength="5"/>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">Date of Birth: (mm/dd/yyyy) </label>
+                    <div class="col-8">
+                        <input type="text" th:field="*{dob}" class="form-control"
+                               required minlength="10" maxlength="10"/>
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">Transfer Bank Source: </label>
+                    <div class="col-8">
+                        <input type="text" th:field="*{transferBank}" class="form-control"
+                               required minlength="5" maxlength="19"/>
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">Initial Deposit Amount: </label>
+                    <div class="col-8">
+                        <input type="text" th:field="*{balance}" class="form-control"
+                               required minlength="2" maxlength="70"/>
+                    </div>
+                </div>
+
+
+
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">External Bank Routing Number: </label>
+                    <div class="col-8">
+                        <input type="text" th:field="*{routingNum}" class="form-control"
+                               required minlength="10" maxlength="10"/>
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">External Bank Account Number: </label>
+                    <div class="col-8">
+                        <input type="text" th:field="*{transferAccountNum}" class="form-control"
+                               required minlength="10" maxlength="10"/>
+                    </div>
+                </div>
+
+                <div>
+                    <button type="submit" id="signInButton">Sign Up</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+</body>
+</html>
+
+
+
+<!--
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+&lt;!&ndash;    <meta charset="ISO-8859-1">&ndash;&gt;
     <title>Sign Up</title>
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
     <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
@@ -16,7 +259,7 @@
 		<form th:action="@{/process_register}" th:object="${user}"
             method="post" style="max-width: 600px; margin: 0 auto;">
          
-            <!-- new class below -->
+            &lt;!&ndash; new class below &ndash;&gt;
 
         <div class="m-3">
             <div class="form-group row">
@@ -26,7 +269,7 @@
                 </div>
             </div>
              
-                         <!-- new class below -->
+                         &lt;!&ndash; new class below &ndash;&gt;
 
              
             <div class="form-group row">
@@ -37,7 +280,7 @@
                 </div>
             </div>
              
-                         <!-- new class below -->
+                         &lt;!&ndash; new class below &ndash;&gt;
 
              
             <div class="form-group row">
@@ -48,7 +291,7 @@
                 </div>
             </div>
              
-                         <!-- new class below -->
+                         &lt;!&ndash; new class below &ndash;&gt;
 
              
             <div class="form-group row">
@@ -59,7 +302,7 @@
                 </div>
             </div>
              
-               <!-- new class below -->
+               &lt;!&ndash; new class below &ndash;&gt;
 
              
             <div class="form-group row">
@@ -70,7 +313,7 @@
                 </div>
             </div>
             
-              <!-- new class below -->
+              &lt;!&ndash; new class below &ndash;&gt;
 
              
             <div class="form-group row">
@@ -81,18 +324,18 @@
                 </div>
             </div>
              
-               <!-- new class below -->
+               &lt;!&ndash; new class below &ndash;&gt;
 
              
             <div class="form-group row">
-                <label class="col-4 col-form-label">Street Address (line 2): </label>
-                <div class="col-8">
-                    <input type="text" th:field="*{addressLine2}" class="form-control"
-                            required minlength="2" maxlength="20"/>
-                </div>
-            </div>
+			    <label class="col-4 col-form-label">Street Address (line 2): </label>
+			    <div class="col-8">
+			        <input type="text" th:field="*{addressLine2}" class="form-control" minlength="0" maxlength="20"/>
+			    </div>
+			</div>
+
              
-               <!-- new class below -->
+               &lt;!&ndash; new class below &ndash;&gt;
 
              
             <div class="form-group row">
@@ -103,7 +346,7 @@
                 </div>
             </div>
             
-              <!-- new class below -->
+              &lt;!&ndash; new class below &ndash;&gt;
 
              
             <div class="form-group row">
@@ -114,7 +357,7 @@
                 </div>
             </div>
              
-               <!-- new class below -->
+               &lt;!&ndash; new class below &ndash;&gt;
 
              
             <div class="form-group row">
@@ -125,7 +368,7 @@
                 </div>
             </div>
              
-               <!-- new class below -->
+               &lt;!&ndash; new class below &ndash;&gt;
 
              
             <div class="form-group row">
@@ -137,11 +380,11 @@
             </div>
              
              
-             <!-- new class below -->
+             &lt;!&ndash; new class below &ndash;&gt;
 
              
             <div class="form-group row">
-                <label class="col-4 col-form-label">Transfer source: </label>
+                <label class="col-4 col-form-label">Transfer Bank Source: </label>
                 <div class="col-8">
                     <input type="text" th:field="*{transferBank}" class="form-control"
                             required minlength="10" maxlength="10"/>
@@ -149,19 +392,19 @@
             </div>
          
          
-          <!-- new class below -->
+          &lt;!&ndash; new class below &ndash;&gt;
 
              
             <div class="form-group row">
                 <label class="col-4 col-form-label">How Much Would You Like To Deposit? </label>
                 <div class="col-8">
                     <input type="text" th:field="*{balance}" class="form-control"
-                            required minlength="1" maxlength="10"/>
+                            required minlength="2" maxlength="70"/>
                 </div>
             </div>
             
              
-             <!-- new class below -->
+             &lt;!&ndash; new class below &ndash;&gt;
 
              
             <div class="form-group row">
@@ -174,7 +417,7 @@
             
             
              
-             <!-- new class below -->
+             &lt;!&ndash; new class below &ndash;&gt;
 
              
             <div class="form-group row">
@@ -185,7 +428,7 @@
                 </div>
             </div>
             
-                         <!-- submit button below -->
+                         &lt;!&ndash; submit button below &ndash;&gt;
 
             <div>
                 <button type="submit" class="btn btn-primary">Sign Up</button>
@@ -197,4 +440,4 @@
     
      
 </body>
-</html>
+</html>-->

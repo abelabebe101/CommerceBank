@@ -40,14 +40,18 @@ public class WebsecurityConfig   {
             auth.requestMatchers("/dashboard").authenticated()
             .anyRequest().permitAll()
             )
-            .formLogin(login ->
-                login.usernameParameter("email")
-                .defaultSuccessUrl("/dashboard")
-                .permitAll()
-            )
+            .formLogin(login -> {
+                login
+                        .loginPage("/login") // Specify your custom login page URL
+                        .usernameParameter("email")
+                        .defaultSuccessUrl("/dashboard")
+                        .permitAll();
+            })
             .logout(logout -> logout.logoutSuccessUrl("/").permitAll()
         );
          
         return http.build();
-    }  
+    }
+
+
 }

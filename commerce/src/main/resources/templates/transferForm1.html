@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Sign Up</title>
+    <title>Transfer Form</title>
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
     <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
@@ -26,6 +26,15 @@
         h2 {
             color: #006747;
             margin-bottom: 30px;
+        }
+        a {
+            color: #FFFFFF;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        a:hover, a:focus {
+            color: #FFFFFF;
+            text-decoration: underline;
         }
         /* Navbar styling */
         .navbar {
@@ -62,10 +71,10 @@
     </style>
 </head>
 <body>
-
+<!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container-fluid">
-        <form th:action="@{/}" method="get">
+        <form th:action="@{/dash_board}" method="get">
             <a href="javascript:;" onclick="this.closest('form').submit();">
                 <img src="https://www.login-bank.org/wp-content/uploads/commerce-bank.png" alt="Commerce Bank Logo" class="icon-image" style="border: none; outline: none;">
             </a>
@@ -76,16 +85,19 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/}"><b>Home</b></a>
+                    <a class="nav-link"  th:href="@{/dash_board}"><b>Home</b></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/register}"><b>Register</b></a>
+                    <a class="nav-link" th:href="@{/transfer}"><b>Transfer Funds</b></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/activate}"><b>Activate Account</b></a>
+                    <a class="nav-link" th:href="@{/dashboard}"><b>User Settings</b></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/login}"><b>Login</b></a>
+                    <a class="nav-link" th:href="@{/dashboard}"><b>Loan Manager</b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/dashboard}"><b>Budgeting</b></a>
                 </li>
             </ul>
         </div>
@@ -93,58 +105,63 @@
 </nav>
 
 <div class="container text-center">
-    <img src="https://epicci.org/wp-content/uploads/2019/02/commerce-bank-logo-2x.png" alt="Commerce Bank Logo" style="max-width: 605px; height: auto;" >
-    <div class="container text-center">
+    <h1>Transfer Funds</h1>
+    <form th:action="@{/transfer-form}" th:object="${transferRequest}" method="post">
         <div>
-            <h2>Online Banking Activation</h2>
-        </div><br>
-        <form th:action="@{/process_activate}" th:object="${user}"
-              method="post" style="max-width: 600px; margin: 0 auto;">
-
-            <div class="m-3">
-                <div class="form-group row">
-                    <label class="col-4 col-form-label">E-mail:</label>
-                    <div class="col-8">
-                        <input type="email" th:field="*{email}" class="form-control" required />
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label class="col-4 col-form-label">Password:</label>
-                    <div class="col-8">
-                        <input type="password" th:field="*{password}" class="form-control" required minlength="6" maxlength="10"/>
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label class="col-4 col-form-label">First Name:</label>
-                    <div class="col-8">
-                        <input type="text" th:field="*{firstName}" class="form-control" required minlength="2" maxlength="20"/>
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label class="col-4 col-form-label">Last Name:</label>
-                    <div class="col-8">
-                        <input type="text" th:field="*{lastName}" class="form-control" required minlength="2" maxlength="20" />
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label class="col-4 col-form-label">Account Number:</label>
-                    <div class="col-8">
-                        <input type="text" th:field="*{accountNum}" class="form-control" required minlength="10" maxlength="10"/>
-                    </div>
-                </div>
-
-                <div>
-                    <button type="submit" id="signInButton">Activate</button>
-                </div>
-            </div>
-        </form>
-
-    </div>
+            <p>Confirm Your Email:</p>
+            <input type="text" id="fromEmail" th:field="*{fromEmail}"/>
+        </div>
+        <br>
+        <div>
+            <p>Confirm Your Password:</p>
+            <input type="password" id="fromPassword" th:field="*{fromPassword}"/>
+        </div>
+        <br>
+        <div>
+            <p>Recipient's Account Number:</p>
+            <input type="text" id="toAccountNum" th:field="*{toAccountNum}"/>
+        </div>
+        <br>
+        <div>
+            <p>Amount To Be Transferred:</p>
+            <input type="number" id="amount" th:field="*{amount}" step="0.01"/>
+        </div>
+        <br>
+        <div>
+            <button type="submit" id="signInButton">Confirm Transfer</button>
+        </div>
+    </form>
 </div>
-
 </body>
 </html>
+
+
+
+<!--
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Transfer Form</title>
+<body>
+<h1>Transfer Amount</h1>
+<form th:action="@{/transfer-form}" th:object="${transferRequest}" method="post">
+    <div>
+        <p>Confirm Your Account Number:</p>
+        <input type="text" id="fromAccountNum" th:field="*{fromAccountNum}"/>
+    </div>
+    <div>
+        <p>Recipient's Account Number</p>
+        <input type="text" id="toAccountNum" th:field="*{toAccountNum}"/>
+    </div>
+    </br>
+    <div>
+        <p>Amount to be transferred:</p>
+        <input type="number" id="amount" th:field="*{amount}"/>
+    </div>
+    </br>
+    <div>
+        <button type="submit">Submit</button>
+    </div>
+</form>
+</body>
+</html>-->

@@ -27,6 +27,10 @@
             color: #006747;
             margin-bottom: 30px;
         }
+        p {
+            color: #FF0000;
+            margin-bottom: 30px;
+        }
         a {
             color: #FFFFFF;
             text-decoration: none;
@@ -115,6 +119,9 @@
         <img src="https://www.commercebank.com/-/media/cb/images/about-us/mediakit-logos/2017cbcagreen342with368stackednofdic.png?revision=5f97da38-1cec-40e1-8ec7-979d3e823f14&modified=20220506162907" alt="Commerce Bank Logo" class="login-image"></br>
         <h2>Customer Login</h2>
     </div>
+    <div style="background-color: #FFE7E7;">
+        <strong><p>Invalid Credentials, Please Try Again.</p></strong>
+    </div>
     <form th:action="@{/login}" th:object="${user}"
           method="post" style="max-width: 600px; margin: 0 auto;">
         <div class="m-3">
@@ -138,61 +145,4 @@
     </form>
 </div>
 </body>
-</html>
-
-
-<!--
-<!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org">
-<head>
-&lt;!&ndash;    <meta charset="ISO-8859-1">&ndash;&gt;
-    <title>Login Page</title>
-    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
-    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
-    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-</head>
-<body>
-	 
-    <div class="container text-center">
-		<div>
-        <h1>Commerce Bank Login</h1>
-		</div>
-		<form th:action="@{/dashboard}" th:object="${user}"
-            method="post" style="max-width: 600px; margin: 0 auto;">
-         
-            &lt;!&ndash; new class below &ndash;&gt;
-
-        <div class="m-3">
-            <div class="form-group row">
-                <label class="col-4 col-form-label">E-mail </label> 
-                <div class="col-8">
-                    <input type="email" th:field="*{email}" class="form-control" required />
-                </div>
-            </div>
-             
-                         &lt;!&ndash; new class below &ndash;&gt;
-
-             
-            <div class="form-group row">
-                <label class="col-4 col-form-label">Password: </label>
-                <div class="col-8">
-                    <input type="password" th:field="*{password}" class="form-control"
-                            required minlength="6" maxlength="30"/>
-                </div>
-            </div>
-            
-               &lt;!&ndash; new class below &ndash;&gt;
-
-            
-
-            <div>
-                <button type="submit" class="btn btn-primary">Sign In</button>
-            </div>
-        </div>
-        </form>
-        
-    </div>
-    
-     
-</body>
-</html>-->
+</html>>

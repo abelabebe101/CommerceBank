@@ -9,7 +9,8 @@ public class PasswordEncoder {
 		String rawPassword = "123456";
 		String encodedPassword = encoder.encode(rawPassword);
 		
-		System.out.println(encodedPassword);				
+		System.out.println(encodedPassword);
+
 	}
 
 }

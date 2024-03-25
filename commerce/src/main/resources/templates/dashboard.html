@@ -1,68 +1,247 @@
 <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            background-color: #F2FFF2;
+            color: #333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .container {
+            margin-top: 50px;
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+        h1 {
+            color: #A3A502;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #006747;
+            margin-bottom: 30px;
+        }
+        h3 {
+            color: #006747;
+            margin-bottom: 30px;
+            margin: 20px 0
+        }
+        a {
+            color: #FFFFFF;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        a:hover, a:focus {
+            color: #FFFFFF;
+            text-decoration: underline;
+        }
+        .top-left {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 3px;
+        }
+        /* Navbar styling */
+        .navbar {
+            background-color: #006747; /* Adjust the color to fit your brand */
+            border-radius: 0;
+        }
+        .navbar-brand, .navbar-nav .nav-link {
+            color: #FFFFFF;
+        }
+        .navbar-brand:hover, .navbar-nav .nav-link:hover {
+            color: #FFFFFF;
+        }
+        .logo-image {
+            max-width: 605px; /* Adjust based on your image's size */
+            height: auto;
+        }
+        .icon-image {
+            max-height: 70px; /* Adjust based on your image's size */
+            width: auto;
+        }
+    </style>
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+        <form th:action="@{/dash_board}" method="get">
+            <a href="javascript:;" onclick="this.closest('form').submit();">
+                <img src="https://www.login-bank.org/wp-content/uploads/commerce-bank.png" alt="Commerce Bank Logo" class="icon-image" style="border: none; outline: none;">
+            </a>
+        </form>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/dash_board}"><b>Home</b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/transfer}"><b>Transfer Funds</b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/dashboard}"><b>User Settings</b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/dashboard}"><b>Loan Manager</b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/budgeting}"><b>Budgeting</b></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container text-center my-5">
+    <img src="https://epicci.org/wp-content/uploads/2019/02/commerce-bank-logo-2x.png" alt="Commerce Bank Logo" class="logo-image" >
+    <br>
+    <br>
+    <h1>Customer Dashboard</h1>
+    <div class="my-4">
+        <h3>Your Available Balance:</h3>
+        <h4><strong>
+            $<span th:text="${balance}"></span>
+        </strong></h4>
+    </div></br>
+    <div class="my-4">
+        <h3>Your Profile:</h3>
+        <p>
+            <b>Full Name: </b><span th:text="${fullName}"></span><br><br>
+            <b>Date Of Birth: </b><span th:text="${dob}"></span><br><br>
+            <b>Email: </b><span th:text="${email}"></span><br><br>
+            <b>Address: </b><span th:text="${address}"></span><br><br>
+            <b>Account Number: </b><span th:text="${accountNum}"></span><br><br>
+            <b>Monthly Income: </b><span th:text="${income}"></span><br><br>
+        </p>
+    </div>
+    <div class="my-4">
+        <h3>Transactions:</h3>
+        <div th:each="transaction : ${transactions}">
+            <p>
+            <h5><b>Amount:</b> <span th:text="${transaction.amount}"> </span></h5> </br> <b>    Date Of Transaction:</b> <span th:text="${transaction.transaction_date}"></span><b>  <span th:text="${transaction.typeOf}"></span></b>  <span th:text="${transaction.toSource}"></span><br><br>
+            </p>
+        </div>
+    </div>
+    <div class="my-4">
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out" class="btn btn-danger" />
+        </form>
+    </div>
+</div>
+</body>
+</html>
+
+
+
+
+
+    <!--<!DOCTYPE html>
+    <html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Dashboard</title>
+        <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+        <style>
+            .top-left {
+                position: absolute;
+                top: 0;
+                right: 0;
+                margin: 3px;
+            }
+        </style>
+    </head>
+    <body>
+
+    <div class="container text-center my-5">
+        <h1 class="mb-4">Commerce Bank Home</h1>
+        <h3>Welcome to the dashboard</h3>
+        <div class="my-4">
+            <h1>Your Data:</h1>
+            <p>
+                <b>Full Name: </b><span th:text="${fullName}"></span><br>
+                <b>Date Of Birth: </b><span th:text="${dob}"></span><br>
+                <b>Email: </b><span th:text="${email}"></span><br>
+                <b>Address: </b><span th:text="${address}"></span><br>
+                <b>Account Number: </b><span th:text="${accountNum}"></span><br>
+            </p>
+        </div>
+        <div class="my-4">
+            <h1>Your Available Balance:</h1>
+            <h2>
+                $<span th:text="${balance}"></span>
+            </h2>
+        </div>
+        <div class="container text-center">
+            <h3><a th:href="@{/transfer}">Transfer Funds</a></h3></br></br>
+        </div>
+
+
+            <form th:action="@{/dash_board}" method="get" class="top-left" style="max-width:5px;max-height:3px;margin:auto;">
+            <button type="submit">refresh</button>
+            </form>
+
+
+        <div class="my-4">
+            <form th:action="@{/logout}" method="post">
+                <input type="submit" value="Sign Out" class="btn btn-primary" />
+            </form>
+        </div>
+    </div>
+
+    </body>
+    </html>-->
+
+
+
+<!--
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
-	<head>
-<!--    <meta charset="ISO-8859-1">-->
+<head>
     <title>Dashboard</title>
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
 </head>
-
-<div class="container text-center">
-		<div>
-        <h1>Commerce Bank Home</h1>
-		</div>
-<!--		<form th:action="@{/dashboard}" th:object="${user}"-->
-<!--            method="post" style="max-width: 600px; margin: 0 auto;">-->
-         
-
-   
 <body>
-    <div class="container text-center">
-        <h3>Welcome to the dashboard</h3>
-    </div>
- <div>
+
+<div class="container text-center my-5">
+    <h1 class="mb-4">Commerce Bank Home</h1>
+    <h3>Welcome to the dashboard</h3>
+    <div class="my-4">
         <h1>Your Data:</h1>
+        <p>
+             <b>Full Name: </b><span sec:authentication="principal.fullName"></span><br>
+             <b>Date Of Birth: </b><span sec:authentication="principal.birth"></span><br>
+             <b>Email: </b><span sec:authentication="principal.user_email"></span><br>
+             <b>Address: </b><span sec:authentication="principal.address"></span><br>
+             <b>Account Number: </b><span sec:authentication="principal.accnum"></span><br>
+        </p>
     </div>
-    <div class="container text-center">
-    <div>
+    <div class="my-4">
+        <h1>Your Available Balance:</h1>
+        <h2>
+             <span sec:authentication="principal.balanceview"></span>
+        </h2>
+    </div>
+    <div class="my-4">
         <form th:action="@{/logout}" method="post">
-            <p>
-                 <b><span sec:authentication="principal.fullName"></span></b>
-                 <b><span sec:authentication="principal.address"></span></b>
-            </p>
-            <input type="submit" value="Sign Out" />
+            <input type="submit" value="Sign Out" class="btn btn-primary" />
         </form>
     </div>
- <div>
-        <h1>Your Available Balance:</h1>
-    </div>
     <div class="container text-center">
-    <div>
-            <p>
-                 <b><span sec:authentication="principal.balanceview"></span></b>
-            </p>
+        <h1>Commerce Bank Login</h1>
+        <h3><a th:href="@{/transfer}">Transfer Funds</a></h3>
     </div>
-     
-<!--    <div>-->
-<!--        <table class="table table-striped table-bordered">-->
-<!--            <thead class="thead-dark">-->
-<!--                <tr>-->
-<!--                    <th>User ID</th>-->
-<!--                    <th>E-mail</th>-->
-<!--                    <th>First Name</th>-->
-<!--                    <th>Last Name</th>-->
-<!--                </tr>-->
-<!--            </thead>-->
-<!--            <tbody>-->
-<!--                <tr th:each="user: ${listUsers}">-->
-<!--                    <td th:text="${user.id}">User ID</td>-->
-<!--                    <td th:text="${user.email}">E-mail</td>-->
-<!--                    <td th:text="${user.firstName}">First Name</td>-->
-<!--                    <td th:text="${user.lastName}">Last Name</td>-->
-<!--                </tr>-->
-<!--            </tbody>-->
-<!--        </table>-->
-<!--    </div>-->
 </div>
-     
+
 </body>
 </html>
+-->
+
