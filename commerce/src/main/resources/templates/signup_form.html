@@ -142,42 +142,10 @@
                 </div>
 
                 <div class="form-group row">
-                    <label class="col-4 col-form-label">Street Address: </label>
+                    <label class="col-4 col-form-label">Address: </label>
                     <div class="col-8">
-                        <input type="text" th:field="*{addressLine1}" class="form-control"
-                               required minlength="2" maxlength="20"/>
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label class="col-4 col-form-label">Street Address (line 2): </label>
-                    <div class="col-8">
-                        <input type="text" th:field="*{addressLine2}" class="form-control" minlength="0" maxlength="20"/>
-                    </div>
-                </div>
-
-
-                <div class="form-group row">
-                    <label class="col-4 col-form-label">City: </label>
-                    <div class="col-8">
-                        <input type="text" th:field="*{city}" class="form-control"
-                               required minlength="2" maxlength="20"/>
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label class="col-4 col-form-label">State: </label>
-                    <div class="col-8">
-                        <input type="text" th:field="*{state}" class="form-control"
-                               required minlength="2" maxlength="20"/>
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label class="col-4 col-form-label">Zip:</label>
-                    <div class="col-8">
-                        <input type="text" th:field="*{zipcode}" class="form-control"
-                               required minlength="5" maxlength="5"/>
+                        <input type="text" th:field="*{address}" class="form-control"
+                               required minlength="2" maxlength="70"/>
                     </div>
                 </div>
 
@@ -204,25 +172,6 @@
                     <div class="col-8">
                         <input type="text" th:field="*{balance}" class="form-control"
                                required minlength="2" maxlength="70"/>
-                    </div>
-                </div>
-
-
-
-                <div class="form-group row">
-                    <label class="col-4 col-form-label">External Bank Routing Number: </label>
-                    <div class="col-8">
-                        <input type="text" th:field="*{routingNum}" class="form-control"
-                               required minlength="10" maxlength="10"/>
-                    </div>
-                </div>
-
-
-                <div class="form-group row">
-                    <label class="col-4 col-form-label">External Bank Account Number: </label>
-                    <div class="col-8">
-                        <input type="text" th:field="*{transferAccountNum}" class="form-control"
-                               required minlength="10" maxlength="10"/>
                     </div>
                 </div>
 

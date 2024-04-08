@@ -24,23 +24,16 @@ public class UserRepositoryTests {
 	@Test
 	public void testCreateUser() {
 		User user = new User();
-		user.setEmail("xxxxx");
-		user.setPassword("xxxxxxx");
+		user.setEmail("");
+		user.setPassword("xxxxxxxxxxxxx");
 		user.setAccountNum();
-		user.setFirstName("Yoo");
-		user.setLastName("Doe");
+		user.setFirstName("John");
+		user.setLastName("Smith");
 		user.setDob("01/01/1990");
-		user.setAddressLine1("123 KC Road");
-		user.setAddressLine2("APT 1");
-		user.setCity("Kansas City");
-		user.setState("Missouri");
-		user.setZipcode("64111");
+		user.setAddress("123 KC Road");
 		user.setPhoneNum("1234567890");
-		user.setBalance(.25);
-		user.setTransferAccountNum("1234567891");
-		user.setTransferBank("1234567890");
-		user.setRoutingNum("1234567891");
-		
+		user.setBalance(2000);
+		user.setTransferBank("Wells Fargo");
 		User savedUser = repo.save(user);
 		
 		User existUser = entityManager.find(User.class, savedUser.getId());

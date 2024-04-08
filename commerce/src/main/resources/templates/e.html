@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error</title>
+    <style>
+        body {
+            background-color: #F2FFF2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            }
+        h1 {
+            color: #006747;
+            margin-bottom: 30px;
+            }
+        h2 {
+            color: #F2FFF2;
+            margin-bottom: 30px;
+                }
+
+            .dancing-text {
+            display: inline-flex;
+            font-size: 2em;
+            font-weight: bold;
+            }
+
+            .dancing-text span {
+            animation: dance 0.6s infinite;
+            display: inline-block;
+            transform-origin: bottom;
+            }
+
+            @keyframes dance {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            }
+
+            .dancing-text span:nth-child(odd) {
+            animation-delay: 0.3s;
+            }
+
+    </style>
+</head>
+<body>
+<div class="dancing-text">
+<h1><span>4</span><span>0</span><span>4</span></h1>
+</div>
+<div><h2><br>_______</br></h2>
+</div>
+<div class="dancing-text">
+    <h1><span>E</span><span>R</span><span>R</span><span>O</span><span>R</span></h1>
+</div></body>
+</html>

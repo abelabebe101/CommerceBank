@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Welcome to Commerce Bank App!</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            background-color: #F2FFF2;
+            color: #333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .container {
+            margin-top: 50px;
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+        h1 {
+            color: #0056b3;
+            margin-bottom: 30px;
+        }
+        a {
+            color: #FFFFFF;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        a:hover, a:focus {
+            color: #FFFFFF;
+            text-decoration: underline;
+        }
+        h3 {
+            margin: 20px 0;
+        }
+        .logo-container {
+            margin-bottom: 30px;
+        }
+        .logo-image {
+            max-width: 605px; /* Adjust based on your image's size */
+            height: auto;
+        }
+        .icon-image {
+            max-height: 70px; /* Adjust based on your image's size */
+            width: auto;
+        }
+        /* Navbar styling */
+        .navbar {
+            background-color: #006747; /* Adjust the color to fit your brand */
+            border-radius: 0;
+        }
+        .navbar-brand, .navbar-nav .nav-link {
+            color: #FFFFFF;
+        }
+        .navbar-brand:hover, .navbar-nav .nav-link:hover {
+            color: #FFFFFF;
+        }
+    </style>
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#"><img src="https://www.login-bank.org/wp-content/uploads/commerce-bank.png" alt="Commerce Bank Logo" class="icon-image" ></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/}"><b>Home</b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/register}"><b>Register</b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/activate}"><b>Activate Account</b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/login}"><b>Login</b></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container text-center">
+    <img src="https://epicci.org/wp-content/uploads/2019/02/commerce-bank-logo-2x.png" alt="Commerce Bank Logo" class="logo-image" >
+    <form th:action="@{/forgot_2fa}"
+          method="post" style="max-width: 600px; margin: 0 auto;">
+        <div class="m-3">
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Your Email: </label>
+                <div class="col-8">
+                    <input type="text" name="email" id="email" class="form-control" minlength="6" maxlength="30"/>
+                </div>
+            </div>
+            <div>
+                <button type="submit" id="signInButton">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

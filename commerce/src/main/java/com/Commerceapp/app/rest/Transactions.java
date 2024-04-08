@@ -37,6 +37,10 @@ public class Transactions {
     private String category;
 
 
+    @Column(nullable = false, unique = false, length = 2)
+    private String plusorminus;
+
+
 
     public Long getId() {
         return id;
@@ -80,6 +84,10 @@ public class Transactions {
         this.transaction_date = now.format(formatter);
     }
 
+//    public void setTransaction_date(String transaction_date) {
+//        this.transaction_date = transaction_date;
+//    }
+
     public String getRefNum() {
         return RefNum;
     }
@@ -112,5 +120,14 @@ public class Transactions {
     public void setCategory(String category) {
         this.category = category;
     }
+
+    public String getPlusorminus() {
+        return plusorminus;
+    }
+
+    public void setPlusorminus(String plusorminus) {
+        this.plusorminus = plusorminus;
+    }
+
 
 }

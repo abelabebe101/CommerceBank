@@ -57,7 +57,7 @@ public class CustomUserDetails implements UserDetails {
     }
     
     public String getaddress() {
-        return user.getAddressLine1() + " , " + user.getAddressLine2()  + " , " +  user.getCity() + " , " + user.getState() + " , " + user.getZipcode();       
+        return user.getAddress();
           
     }
     

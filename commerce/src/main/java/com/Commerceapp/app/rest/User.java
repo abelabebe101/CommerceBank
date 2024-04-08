@@ -10,7 +10,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false, unique = true, length = 45)
+    @Column(nullable = true, unique = true, length = 45)
     private String email;
 
     @Column(nullable = true, unique = true, length = 12)
@@ -19,21 +19,8 @@ public class User {
     @Column(nullable = false, length = 64)
     private String password;
 
-    @Column(nullable = false, length = 64)
-    private String addressLine1;
-
-
-    @Column(nullable = false, length = 64)
-    private String addressLine2;
-
-    @Column(nullable = false, length = 64)
-    private String city;
-
-    @Column(nullable = false, length = 64)
-    private String state;
-
-    @Column(nullable = false, length = 5)
-    private String zipcode;
+    @Column(nullable = false, length = 70)
+    private String address;
 
     @Column(nullable = false, length = 10)
     private String phoneNum;
@@ -51,12 +38,13 @@ public class User {
     
     @Column(nullable = true, length = 20)
     private String transferBank;
-    
-    @Column(nullable = false, length = 10)
-    private String routingNum;
-    
-    @Column(nullable = true, length = 20)
-    private String transferAccountNum;
+
+
+    @Column(nullable = true, length = 6)
+    private String otp;
+
+
+
 
     public Long getId() {
         return id;
@@ -99,45 +87,14 @@ public class User {
         this.password = password;
     }
 
-    public String getAddressLine1() {
-        return addressLine1;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAddressLine1(String addressLine1) {
-        this.addressLine1 = addressLine1;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public String getAddressLine2() {
-        return addressLine2;
-    }
-
-    public void setAddressLine2(String addressLine2) {
-        this.addressLine2 = addressLine2;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public String getZipcode() {
-        return zipcode;
-    }
-
-    public void setZipcode(String zipcode) {
-        this.zipcode = zipcode;
-    }
 
     public String getPhoneNum() {
         return phoneNum;
@@ -187,21 +144,16 @@ public class User {
 		this.transferBank = transferBank;
 	}
 
-	public String getRoutingNum() {
-		return routingNum;
-	}
+    public String getOtp() {
+        return otp;
+    }
 
-	public void setRoutingNum(String routingNum) {
-		this.routingNum = routingNum;
-	}
+    public void setOtp(String otp) {
+        this.otp = otp;
+    }
 
-	public String getTransferAccountNum() {
-		return transferAccountNum;
-	}
 
-	public void setTransferAccountNum(String transferAccountNum) {
-		this.transferAccountNum = transferAccountNum;
-	}
+
 
 
 }

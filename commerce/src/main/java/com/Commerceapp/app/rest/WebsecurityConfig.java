@@ -44,7 +44,7 @@ public class WebsecurityConfig   {
                 login
                         .loginPage("/login") // Specify your custom login page URL
                         .usernameParameter("email")
-                        .defaultSuccessUrl("/dashboard")
+                        .defaultSuccessUrl("/2fa")
                         .permitAll();
             })
             .logout(logout -> logout.logoutSuccessUrl("/").permitAll()

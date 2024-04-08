@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            background-color: #F2FFF2;
+            color: #333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .container {
+            margin-top: 50px;
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+        h1 {
+            color: #A3A502;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #006747;
+            margin-bottom: 30px;
+        }
+        h3 {
+            color: #006747;
+            margin-bottom: 30px;
+            margin: 20px 0;
+        }
+        a {
+            color: #FFFFFF;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        a:hover, a:focus {
+            color: #FFFFFF;
+            text-decoration: underline;
+        }
+        .top-left {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 3px;
+        }
+        /* Navbar styling */
+        .navbar {
+            background-color: #006747; /* Adjust the color to fit your brand */
+            border-radius: 0;
+        }
+        .navbar-brand, .navbar-nav .nav-link {
+            color: #FFFFFF;
+        }
+        .navbar-brand:hover, .navbar-nav .nav-link:hover {
+            color: #FFFFFF;
+        }
+        .logo-image {
+            max-width: 605px; /* Adjust based on your image's size */
+            height: auto;
+        }
+        .icon-image {
+            max-height: 70px; /* Adjust based on your image's size */
+            width: auto;
+        }
+    </style>
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+        <form th:action="@{/dash_board}" method="get">
+            <a href="javascript:;" onclick="this.closest('form').submit();">
+                <img src="https://www.login-bank.org/wp-content/uploads/commerce-bank.png" alt="Commerce Bank Logo" class="icon-image" style="border: none; outline: none;">
+            </a>
+        </form>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/dash_board}"><b>Home</b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/transfer}"><b>Transfer Funds</b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/settings}"><b>User Settings</b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/dashboard}"><b>Loan Manager</b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/budgeting}"><b>Budgeting</b></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container text-center my-5">
+    <img src="https://epicci.org/wp-content/uploads/2019/02/commerce-bank-logo-2x.png" alt="Commerce Bank Logo" class="logo-image" >
+    <br>
+    <br>
+    <h1>User Settings</h1>
+
+
+    <form th:action="@{/process_change}" th:object="${user}"
+          method="post" style="max-width: 600px; margin: 0 auto;">
+
+        <p><b>Account Number: </b><span th:text="${accountNum}"></span></p><br><br>
+
+        <div class="m-3">
+            <div class="form-group row">
+                <label class="col-4 col-form-label">E-mail </label>
+                <div class="col-8">
+                    <input type="email" th:field="*{email}" class="form-control" required   />
+                </div>
+            </div>
+
+            <input type="hidden" name="accountNum" th:value="${accountNum}" />
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Current Password: </label>
+                <div class="col-8">
+                    <input type="password" th:field="*{password}" class="form-control"
+                          required minlength="6" maxlength="30"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-4 col-form-label">New Password: </label>
+                <div class="col-8">
+                    <input type="password" name="newPassword" id="newPassword" class="form-control" minlength="6" maxlength="30"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Confirm New Password: </label>
+                <div class="col-8">
+                    <input type="password" id="confirmPassword" class="form-control"
+                           minlength="6" maxlength="30"/>
+                    <small id="passwordMismatch" class="text-danger d-none">Passwords do not match!</small>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-4 col-form-label">First Name: </label>
+                <div class="col-8">
+                    <input type="text" th:field="*{firstName}" class="form-control"
+                           required minlength="2" maxlength="20" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Last Name: </label>
+                <div class="col-8">
+                    <input type="text" th:field="*{lastName}" class="form-control"
+                           required minlength="2" maxlength="20" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Phone Number: </label>
+                <div class="col-8">
+                    <input type="text" th:field="*{phoneNum}" class="form-control"
+                           required minlength="10" maxlength="10"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Street Address: </label>
+                <div class="col-8">
+                    <input type="text" th:field="*{address}" class="form-control"
+                           required minlength="2" maxlength="20"/>
+                </div>
+            </div>
+
+
+            <div>
+                <button type="submit" id="signInButton">Save Changes</button>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+</body>
+</html>
+
+
+
+<script>
+    document.getElementById("signInButton").addEventListener("click", function(event) {
+        var password = document.getElementById("newPassword").value;
+        var confirmPassword = document.getElementById("confirmPassword").value;
+
+        if (password !== confirmPassword) {
+            event.preventDefault();
+            document.getElementById("passwordMismatch").classList.remove("d-none");
+        }
+    });
+</script>
+
+</body>
+</html>
