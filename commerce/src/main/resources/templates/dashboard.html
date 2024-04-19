@@ -7,7 +7,7 @@
     <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
     <style>
         body {
-            background-color: #F2FFF2;
+            background-color: #FFFFFF;
             <!--background-image: url('https://images.pexels.com/photos/7135017/pexels-photo-7135017.jpeg');
             background-size: cover; /* Cover the entire page */
             background-position: center; /* Center the background image */-->
@@ -35,12 +35,12 @@
             margin: 20px 0
         }
         a {
-            color: #FFFFFF;
+            color: #ff0000;
             text-decoration: none;
             transition: color 0.3s ease;
         }
         a:hover, a:focus {
-            color: #FFFFFF;
+            color: #ff0000;
             text-decoration: underline;
         }
         .top-left {
@@ -51,7 +51,7 @@
         }
         /* Navbar styling */
         .navbar {
-            background-color: #006747; /* Adjust the color to fit your brand */
+            background-color: #78BE20; /* Adjust the color to fit your brand */
             border-radius: 0;
         }
         .navbar-brand, .navbar-nav .nav-link {
@@ -60,6 +60,16 @@
         .navbar-brand:hover, .navbar-nav .nav-link:hover {
             color: #FFFFFF;
         }
+        nav a {
+            color: #FFFFFF !important;
+        }
+        nav li a {
+            color: #FFFFFF !important;
+        }
+        .nav-item {
+            color: #FFFFFF !important;
+        }
+
         .logo-image {
             max-width: 605px; /* Adjust based on your image's size */
             height: auto;
@@ -167,7 +177,7 @@
 
 
 
-    <div class="my-4">
+    <!--<div class="my-4">
         <h3>Your Profile:</h3>
         <p>
             <b>Full Name: </b><span th:text="${fullName}"></span><br><br>
@@ -177,7 +187,7 @@
             <b>Account Number: </b><span th:text="${accountNum}"></span><br><br>
             <b>Monthly Income: </b><span th:text="${income}"></span><br><br>
         </p>
-    </div>
+    </div>-->
     <h3>Transaction History:</h3>
     <div th:each="transaction : ${transactions}">
     <div id="zenithBalanceContainer1" class="zenith-balance-card1">

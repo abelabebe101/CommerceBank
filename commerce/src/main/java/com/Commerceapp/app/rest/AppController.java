@@ -213,8 +213,21 @@ public class AppController {
 		// Assuming you have a method to get the updated user details
 		User user = repo.findByEmail(currentUser.getUsername());
 		model.addAttribute("user", user);
-		model.addAttribute("accountNum", user.getAccountNum());
+		double monthly_income = userService.getMatchingAmounts(user.getAccountNum());
+
 		String fullName = user.getFirstName() + " " + user.getLastName();
+		String address = user.getAddress();
+		double user_balance = user.getBalance();
+		BigDecimal bankbalance = BigDecimal.valueOf(user_balance).setScale(2, RoundingMode.HALF_UP);
+
+		model.addAttribute("fullName", fullName);
+		model.addAttribute("dob", user.getDob());
+		model.addAttribute("email", user.getEmail());
+		model.addAttribute("address", address);
+		model.addAttribute("accountNum", user.getAccountNum());
+		model.addAttribute("balance", bankbalance);
+		model.addAttribute("income", monthly_income);
+
 
 		return "user_settings";
 	}
